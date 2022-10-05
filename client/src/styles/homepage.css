@@ -1,0 +1,14 @@
+#homepage-start{
+    background-color: whitesmoke;
+    text-align: center;
+    margin: -8px;
+    margin-top: -22px;
+}
+#banner{
+    text-align: center;
+    display: block;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    width: 50%;
+}
