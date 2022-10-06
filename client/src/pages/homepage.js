@@ -25,14 +25,16 @@ export default function Homepage(){
             
             <section id='profile'>
             <Container fluid>
-                <Row debug>
-                    <Col md={15} debug>Wellcome --username--</Col>
+                <Row >
+                    <Col md={15} >
+                        <h1>Wellcome --username--</h1>
+                    </Col>
                 </Row>
                 <br/>
-                <Row debug>
-                    <Col md={8} debug>
-                        <Row debug>
-                            <Col debug>
+                <Row >
+                    <Col md={8} >
+                        <Row >
+                            <Col >
                             <img src={profile} alt='profileImage' id='profileImage'></img>
                             <div>
                                 Name: username
@@ -42,14 +44,14 @@ export default function Homepage(){
                                 Score: All the game played and put togetther
                             </div>
                             </Col>
-                            <Col debug>
+                            <Col >
                                 <div>
                                     About me about profile:
                                 </div>
                             </Col>
                         </Row>
                     </Col>
-                    <Col md={4} debug>Friends</Col>
+                    <Col md={4} >Friends</Col>
                 </Row>
             </Container>
             </section>
