@@ -4,26 +4,22 @@ import '../styles/homepage.css'
 import banner from '../styles/asset/MicroGame.png'
 import profile from '../styles/asset/ProfilePic.jpg'
 
-
-
-
-
-
-export default function Homepage(){
+function Nav(){
     return(
-        <div>
-            <img src={banner} alt='bannerImages' id='banner'></img>
+        <ul className="nav justify-content-center">
+            <li className="nav-item">
+                <a className="nav-link active" href="#Home">Home</a>
+            </li>
+            <li className="nav-item">
+                <a className="nav-link" href="#MineGame">Mini Game</a>
+            </li>  
+        </ul>
+    )
+}
 
-            <ul className="nav justify-content-center">
-                <li className="nav-item">
-                    <a className="nav-link active" href="#Home">Home</a>
-                </li>
-                <li className="nav-item">
-                    <a className="nav-link" href="#MineGame">Mini Game</a>
-                </li>  
-            </ul>
-            
-            <section id='profile'>
+function Profile(){
+    return(
+        <section id='profile'>
             <Container fluid>
                 <Row >
                     <Col md={15} >
@@ -54,7 +50,18 @@ export default function Homepage(){
                     <Col md={4} >Friends</Col>
                 </Row>
             </Container>
-            </section>
+        </section>
+    )
+}
+
+export default function Homepage(){
+    return(
+        <div>
+            <img src={banner} alt='bannerImages' id='banner'></img>
+
+            <Nav/>
+        
+            <Profile/>
 
 
         </div>
