@@ -15,3 +15,9 @@
 #profile{
     text-align: center;
 }
+#profileImage{
+    width: 170px;
+    height: auto;
+    float: left;
+    border-radius: 30%;
+}
