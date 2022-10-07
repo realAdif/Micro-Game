@@ -12,7 +12,10 @@ function Nav(){
             </li>
             <li className="nav-item">
                 <a className="nav-link" href="#MineGame">Mini Game</a>
-            </li>  
+            </li>
+            <li className="nav-item">
+                <a className="nav-link" href="/login">Login</a>
+            </li>   
         </ul>
     )
 }
