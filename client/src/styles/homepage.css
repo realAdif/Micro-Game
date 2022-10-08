@@ -21,3 +21,8 @@
     float: left;
     border-radius: 30%;
 }
+.navbar-nav.navbar-center {
+    position: absolute;
+    left: 50%;
+    transform: translatex(-50%);
+}
