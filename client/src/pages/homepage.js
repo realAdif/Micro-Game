@@ -1,36 +1,10 @@
 import React from 'react';
 import {Container,Row,Col} from 'react-grid-system';
+import Navbar from './Navbar';
 import '../styles/homepage.css'
-import banner from '../styles/asset/MicroGame.png'
 import profile from '../styles/asset/ProfilePic.jpg'
 
-function Nav(){
-    return(
-        <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-            <div className="container">
-                <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar10">
-                    <span className="navbar-toggler-icon"></span>
-                </button>
-                <div className="navbar-collapse collapse" id="navbar10">
-                    <ul className="navbar-nav nav-fill w-100">
-                        <li className="nav-item">
-                            <a className="nav-link" href="/">Home</a>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link" href="MiniGame">Mini Game</a>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link" href="login">Login</a>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link" href="signup">signup</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    )
-}
+
 
 function Profile(){
     return(
@@ -72,8 +46,7 @@ function Profile(){
 export default function Homepage(){
     return(
         <div>
-            <img src={banner} alt='bannerImages' id='banner'></img>
-            <Nav/>       
+            <Navbar/>       
             <Profile/>
         </div>
     )

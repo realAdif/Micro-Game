@@ -1,8 +1,12 @@
 import React from "react";
+import banner from '../styles/asset/MicroGame.png'
 
 export default function Navbar(){
 
     return(
+        <div>
+
+        <img src={banner} alt='bannerImages' id='banner'></img>
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
             <div className="container">
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar10">
@@ -26,6 +30,7 @@ export default function Navbar(){
                 </div>
             </div>
         </nav>
+    </div>
     )
 }
 
