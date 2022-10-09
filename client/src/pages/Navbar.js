@@ -15,16 +15,16 @@ export default function Navbar(){
                 <div className="navbar-collapse collapse" id="navbar10">
                     <ul className="navbar-nav nav-fill w-100">
                         <li className="nav-item">
-                            <a className="nav-link" href="/">Home</a>
+                            <a className="nav-link" href="/">HOME</a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="MiniGame">Mini Game</a>
+                            <a className="nav-link" href="MiniGame">MINI GAMES</a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="login">Login</a>
+                            <a className="nav-link" href="login">LOGIN</a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="signup">signup</a>
+                            <a className="nav-link" href="signup">SING UP</a>
                         </li>
                     </ul>
                 </div>
