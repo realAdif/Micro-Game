@@ -24,7 +24,7 @@ export default function Navbar(){
                             <a className="nav-link" href="login">LOGIN</a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="signup">SING UP</a>
+                            <a className="nav-link" href="signup">SIGN UP</a>
                         </li>
                     </ul>
                 </div>
