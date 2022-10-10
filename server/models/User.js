@@ -20,7 +20,7 @@ const userSchema = new Schema(
             required: true,
         },
         score:{
-            tpye: Number,
+            type: Number,
             required: false
         }
 

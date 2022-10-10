@@ -4,7 +4,7 @@ import Home from './pages/homePage'
 import Login from './pages/login';
 import SignUp from './pages/signup';
 import MiniGame from './pages/MiniGames';
-import TicTacToe from './pages/TicTacToe/index';
+import Hangman from './pages/Hang-Man/Hangman';
 
 function App() {
   return (
@@ -17,8 +17,8 @@ function App() {
       <Route path='/minigame'
       element={<MiniGame/>}
       />
-      <Route path='/tictactoe'
-      element={<TicTacToe/>}
+      <Route path='/hangman'
+      element={<Hangman/>}
       />
       
       <Route path='/login'
