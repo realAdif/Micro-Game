@@ -1,93 +1,144 @@
-import React, { useEffect, useState } from 'react';
+import React, { Component } from "react";
+import {randomWord} from './words'
+import Navbar from '../Navbar'
 import './style/hangman.css'
-import Navbar from '../Navbar';
 
-import image0 from './images/0.png';
-import image1 from './images/1.png';
-import image2 from './images/2.png';
-import image3 from './images/3.png';
-import image4 from './images/4.png';
-import image5 from './images/5.png';
-import image6 from './images/6.png';
+import step0 from "./images/0.png";
+import step1 from "./images/1.png";
+import step2 from "./images/2.png";
+import step3 from "./images/3.png";
+import step4 from "./images/4.png";
+import step5 from "./images/5.png";
+import step6 from "./images/6.png";
 
-function randomWords(){
-    const words = ["Hangman","Game"];
-    return words[Math.floor(Math.random() * words.length)] 
-}
+let gameStat;
+let profileScore = 0;
+class Hangman extends Component {
+  static defaultProps = {
+    maxWrong: 6,
+    images: [step0, step1, step2, step3, step4, step5, step6],
+  };
 
-function StartUpScreen(props){
-    return<button id='startUpScreen' onClick={props}>Start</button>
-}
-function HangmanGame({duration = 120000}){
-    const hangmanImage = [image0,image1,image2,image3,image4,image5,image6]
-    let newWord = "Hangman".toUpperCase();
-    let counter = 0;
-
-    const alphabets = ["A", "B", "C", "D", "E", "F", "G","H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R","S", "T", "U", "V", "W", "X", "Y", "Z"];
-
-    const [correctGuesses, setCorrectGuesses] = useState([])
-    const [timeUp, setTimeUp] = useState(false);
-
-    const [imageIndex, SetImageIndex] = useState(counter)
-
-    useEffect(() => {
-        const timeout = setTimeout(() => {
-            setTimeUp(true);
-        }, duration);
-
-        return () => clearTimeout(timeout);
-    },)
-
-    useEffect(()=>{
-        console.log('NEW image')
-    },[imageIndex])
-
-    const maskedWord = newWord.split('').map(letter => correctGuesses.includes(letter) ? letter : "_").join(" ");
-    return(
-        <div>
-            <img src={hangmanImage[6]} alt='hangmanImages' id='hangmanImage'></img>
-            {}
-            <p id='hangman'>{maskedWord}</p>
-            <div id='buttons'>
-
-            {alphabets.map((alphabet, index) => <button id='buttonStyle' key={index} onClick={(event) => {
-                console.log(alphabet)
-                event.currentTarget.disabled = true;
-                if (newWord.includes(alphabet)) {
-                    setCorrectGuesses([...correctGuesses, alphabet])
-                }else{
-                    console.log("this is wrong");
-                    SetImageIndex(counter++)
-                    console.log(counter);
-                }
-
-            }}>{alphabet}</button>)}
-            
-            </div>
-            <br/>
-            {counter >0 && <p id='hangmanText'>You Lost the counter!{counter}</p> }
-            {timeUp ? <p id='hangmanText'>You lost!</p> : !maskedWord.includes("_") &&  <p id='hangmanText'>You won!</p>}
-        </div>
-    )
-}
-
-
-export default function Hangman() {
-    const [isShown, setIsShown] = useState(false);
-
-    const handleClick = event => {
-        setIsShown(current => !current);
-        event.currentTarget.disabled = true;
+  constructor(props) {
+    super(props);
+    this.state = {
+      mistake: 0,
+      guessed: new Set(),
+      answer: randomWord(),
     };
+    this.handleGuess = this.handleGuess.bind(this);
+    this.keyPress = this.keyPress.bind(this);
+    window.addEventListener("keydown", this.keyPress);
+  }
 
+  guessedWord() {
+    return this.state.answer
+      .split("")
+      .map((bingo) => (this.state.guessed.has(bingo) ? bingo : "_ "));
+  }
+
+  handleGuess(value) {
+    let letter = value;
+    this.setState((st) => ({
+      guessed: st.guessed.add(letter),
+      mistake: st.mistake + (st.answer.includes(letter) ? 0 : 1),
+    }));
+  }
+
+  keyPress(event) {
+    if (gameStat === "YOU WON" || gameStat === "YOU LOST") {
+      if (event.keyCode === 8 || event.keyCode === 13 || event.keyCode === 32) {
+        this.resetButton();
+      }
+    } else if (
+      (event.keyCode >= 65 && event.keyCode <= 90) ||
+      (event.keyCode >= 97 && event.keyCode <= 122)
+    ) {
+      this.handleGuess(event.key);
+    } else if (
+      event.keyCode === 8 ||
+      event.keyCode === 13 ||
+      event.keyCode === 32
+    ) {
+      this.resetButton();
+    } else {
+    }
+  }
+
+  generateButtons() {
+    return "abcdefghijklmnopqrstuvwxyz".split("").map((letter) => (
+      <button
+        key={letter}
+        value={letter}
+        onClick={(e) => this.handleGuess(e.target.value)}
+        id="buttonStyle"
+        disabled={this.state.guessed.has(letter)}
+      >
+        {letter}
+      </button>
+    ));
+  }
+
+  resetButton = () => {
+    this.setState({
+      mistake: 0,
+      guessed: new Set(),
+      answer: randomWord(),
+    });
+  };
+
+  render() {
+    const { mistake, answer } = this.state;
+    const { maxWrong, images } = this.props;
+    const gameOver = mistake >= maxWrong;
+    const altText = `${mistake}/${maxWrong} wrong guesses`;
+    const isWinner = this.guessedWord().join("") === answer;
+    gameStat = this.generateButtons();
+    if (isWinner) {
+      gameStat = "YOU WON";
+      profileScore = profileScore++;
+      console.log(profileScore);
+    }
+    if (gameOver) {
+      gameStat = "YOU LOST";
+    }
 
     return (
-        <div >
-            <Navbar/>
-            <button id='startUpScreen' onClick={handleClick}>Start</button>
-            {isShown && <HangmanGame />}
-            
+      <div>
+        <Navbar/>
+
+        <div id="gussedWrong">
+        Guessed wrong: {mistake}
+        </div>
+
+        <p className="text-center">
+          <img src={images[mistake]} alt={altText} />
+        </p>
+
+        <div>
+            <p className="text-center text-light">
+            Guess the Programming Language ?
+            </p>
+            <p className="Hangman-word text-center" id="hangmanWords">
+            {!gameOver ? this.guessedWord() : answer}{" "}
+            {console.log(answer)}
+            </p>
+        </div>
+
+        <p className="text-center text-warning mt-4">{gameStat}</p>
+
+        <div>
+          <p className="text-center">
+            <button className="Hangman-reset" onClick={this.resetButton}>
+              Reset
+            </button>
+          </p>
 
         </div>
+
+      </div>
     );
+  }
 }
+
+export default Hangman;
