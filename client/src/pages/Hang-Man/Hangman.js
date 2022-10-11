@@ -96,7 +96,7 @@ class Hangman extends Component {
     gameStat = this.generateButtons();
     if (isWinner) {
       gameStat = "YOU WON";
-      profileScore = profileScore++;
+      profileScore++;
       console.log(profileScore);
     }
     if (gameOver) {
@@ -116,7 +116,7 @@ class Hangman extends Component {
         </p>
 
         <div>
-            <p className="text-center text-light">
+            <p id="gussedWrong">
             Guess the Programming Language ?
             </p>
             <p className="Hangman-word text-center" id="hangmanWords">
@@ -129,8 +129,8 @@ class Hangman extends Component {
 
         <div>
           <p className="text-center">
-            <button className="Hangman-reset" onClick={this.resetButton}>
-              Reset
+            <button className="Hangman-reset" id="resetButton" onClick={this.resetButton}>
+              RESET
             </button>
           </p>
 
