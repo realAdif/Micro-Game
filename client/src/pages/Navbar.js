@@ -1,6 +1,7 @@
 import React from "react";
 import banner from '../styles/asset/MicroGame.png'
 
+
 export default function Navbar(){
 
     return(
