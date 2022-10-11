@@ -1,4 +1,4 @@
-import React,{useState} from "react";
+import React,{useState, useEffect} from "react";
 import {Link} from 'react-router-dom';
 
 import { useMutation } from "@apollo/client";
@@ -12,8 +12,12 @@ export default function SignUp(){
         email: '',
         password: '',
     });
-      const [addUser, { error, data }] = useMutation(ADD_USER);
-    
+
+
+      const [addUser, { error }] = useMutation(ADD_USER);
+    //   useEffect (()=> {
+        
+    //     })
       const handleChange = (event) => {
         const { name, value } = event.target;
     
@@ -30,6 +34,7 @@ export default function SignUp(){
           const { data } = await addUser({
             variables: { ...formState },
           });
+          console.log(data);
     
           Auth.login(data.addUser.token);
         } catch (e) {
@@ -46,13 +51,7 @@ export default function SignUp(){
                         <div className="col-xl-5 col-lg-6 col-md-8 col-sm-10 mx-auto text-center form p-4">
                             <h1 className="display-4 py-2 text-truncate">Sign up</h1>
                             <div className="px-2">
-                            {data ?(
-                                <p>
-                                Success! You may now head{' '}
-                                <Link to="/">back to the homepage.</Link>
-                              </p>
-
-                            ):(
+                            
                                 <form action="" className="justify-content-center" onSubmit={handleFormSubmit}>
                                     <div className="form-group">
                                         <label className="sr-only">email</label>
@@ -78,7 +77,7 @@ export default function SignUp(){
                                     <br/>
                                     <button type="submit" className="btn btn-primary btn-lg">Sign up</button>
                                 </form>
-                            )}
+                           
                             {error && (
                                 <div className="my-3 p-3 bg-danger text-white">
                                     {error.message}

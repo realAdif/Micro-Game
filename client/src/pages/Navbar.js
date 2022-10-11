@@ -1,7 +1,7 @@
 import React from "react";
 import banner from '../styles/asset/MicroGame.png'
-
-
+import Auth from "../utils/auth";
+console.log(Auth.loggedIn());
 export default function Navbar(){
 
     return(
@@ -21,12 +21,21 @@ export default function Navbar(){
                         <li className="nav-item">
                             <a className="nav-link" href="MiniGame">MINI GAMES</a>
                         </li>
+                        {!Auth.loggedIn()?  
+                        (
+                        <>
                         <li className="nav-item">
                             <a className="nav-link" href="login">LOGIN</a>
                         </li>
                         <li className="nav-item">
                             <a className="nav-link" href="signup">SIGN UP</a>
                         </li>
+                        </>
+                        ): (<>
+                            <li className="nav-item">
+                                <a className="nav-link" href="login">LOGGED OUT</a>
+                            </li>
+                            </>)  }
                     </ul>
                 </div>
             </div>
