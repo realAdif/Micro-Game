@@ -12,6 +12,7 @@ import Home from './pages/homePage'
 import Login from './pages/Login';
 import SignUp from './pages/signup';
 import MiniGame from './pages/MiniGames';
+import Profile from './pages/Profile';
 import Hangman from './pages/Hang-Man/Hangman';
 
 const httpLink = createHttpLink({
@@ -59,6 +60,9 @@ function App() {
 
           <Route path='/signup'
           element={<SignUp/>}
+          />
+          <Route path='/profile'
+          element={<Profile/>}
           />
           
         </Routes>

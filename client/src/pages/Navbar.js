@@ -33,6 +33,9 @@ export default function Navbar(){
                         </>
                         ): (<>
                             <li className="nav-item">
+                                <a className="nav-link" href="profile">PROFILE</a>
+                            </li>
+                            <li className="nav-item">
                                 <a className="nav-link" href="login">LOGGED OUT</a>
                             </li>
                             </>)  }

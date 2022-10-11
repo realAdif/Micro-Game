@@ -15,9 +15,7 @@ export default function SignUp(){
 
 
       const [addUser, { error }] = useMutation(ADD_USER);
-    //   useEffect (()=> {
-        
-    //     })
+   
       const handleChange = (event) => {
         const { name, value } = event.target;
     

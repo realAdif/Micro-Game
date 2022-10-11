@@ -10,7 +10,7 @@ import Navbar from "./Navbar";
 
 export default function Login(props){
     const [formState, setFormState] = useState({email: '', password: ''});
-    const [login, {error,data}] = useMutation(LOGIN_USER);
+    const [login, {error}] = useMutation(LOGIN_USER);
 
     const handleChange = (event) =>{
         const {name, value} = event.target;
@@ -28,6 +28,7 @@ export default function Login(props){
             const {data} = await login({
                 variables: {...formState},
             });
+            console.log(data)
 
             Auth.Login(data.login.token);
         } catch(e){
@@ -52,7 +53,7 @@ export default function Login(props){
                             <div className="px-2">
                                 <form action="" className="justify-content-center" onSubmit={handleFormSubmit}>
                                     <div className="form-group">
-                                        <label className="sr-only">username</label>
+                                        <label className="sr-only">Email</label>
                                         <input type="email" className="form-control" placeholder="username"
                                         name="email" value={formState.email} onChange={handleChange}
                                         />
