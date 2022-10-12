@@ -1,21 +1,8 @@
 import React from "react";
 import {Container,Row,Col} from 'react-grid-system';
 import Navbar from "./Navbar";
-
-
-const style ={
-    card:{
-        width: "18rem",
-        textAlign: "center"
-    },
-    container:{
-        width: "640px",
-        height: "auto",
-        margin: "0 auto",
-        padding: "10px",
-        position: "relative"
-    }
-}
+import '../styles/minigame.css'
+import hangman from '../styles/asset/HangmanMiniGame.png'
 
 
 export default function MiniGame(){
@@ -24,11 +11,11 @@ export default function MiniGame(){
         <section>
             <Navbar/>
             <br/>
-            <Container fluid style={style.container}>
+            <Container fluid id="container" >
                 <Row justify="between" debug>
                     <Col >
-                    <div className="card" style={style.card}>
-                {/* <img className="card-img-top" src="..." alt="Card image cap"/> */}
+                    <div className="card">
+                    <img src={hangman} className="card-img-top" alt='bannerImages' id='banner'></img>
                         <div className="card-body">
                             <h5 className="card-title">Tic Tac Toe</h5>
                             <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
@@ -37,7 +24,7 @@ export default function MiniGame(){
                     </div>
                     </Col>
                     <Col >
-                    <div className="card" style={style.card}>
+                    <div className="card">
                 {/* <img className="card-img-top" src="..." alt="Card image cap"/> */}
                         <div className="card-body">
                             <h5 className="card-title">Math Quiz</h5>
@@ -49,7 +36,7 @@ export default function MiniGame(){
                 </Row>
                 <br/>
             </Container>
-            <p> More Mini Games on the way...</p>
+            <p id="minigameText"> More Micro-Games are on the way...</p>
 
 
             
