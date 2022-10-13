@@ -30,7 +30,7 @@
     transform: translatex(-50%);
 }
 
-#titleScreen{
+.titleScreen{
     text-align: center;
     font-family: 'Roboto Condensed', sans-serif;
     font-size: 30px;
@@ -42,7 +42,7 @@
 .jc-center {
     justify-content: center;
 }
-#buttonRight{
+.buttonRight{
     margin-right: 20px;
     width: 200px;
 }

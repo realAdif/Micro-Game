@@ -1,5 +1,6 @@
 const { AuthenticationError } = require('apollo-server-express');
 const {User} = require('../models');
+const { findById } = require('../models/User');
 const {signToken} = require('../utils/auth');
 
 const resolvers ={
@@ -22,6 +23,17 @@ const resolvers ={
             const user = await User.create({username,email,password});
             const token = signToken(user);
             return { token, user };
+        },
+        addPost: async(parent,{post}, context) => {
+            console.log(context.user)
+            if(context.user){
+                
+                const user = await findOne({_id:context.user._id}); 
+                user.post.push(post);
+                const newUser = await User.findByIdAndUpdate(context.user._id, user, {new: true});
+                return newUser;
+            }
+
         },
         login: async (parent, {email,password}) =>{
             const user = await User.findOne({email}); 

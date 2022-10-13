@@ -3,7 +3,7 @@ import banner from '../styles/asset/MicroGame.png'
 import Auth from "../utils/auth";
 console.log(Auth.loggedIn());
 export default function Navbar(){
-
+    
     return(
         <div>
 
@@ -36,7 +36,7 @@ export default function Navbar(){
                                 <a className="nav-link" href="profile">PROFILE</a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="login">LOGGED OUT</a>
+                                <a className="nav-link" href="/" >LOGGED OUT</a>
                             </li>
                             </>)  }
                     </ul>

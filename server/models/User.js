@@ -19,6 +19,16 @@ const userSchema = new Schema(
             type: String,
             required: true,
         },
+        aboutMe:{
+            type: String,
+            minlength: 1,
+            maxlength: 500,
+        },
+        post:[{
+            type: String,
+            minlength: 1,
+            maxlength: 280,
+        }],
         score:{
             type: Number,
             required: false
