@@ -36,7 +36,7 @@ export default function Navbar(){
                                 <a className="nav-link" href="profile">PROFILE</a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="/" >LOGGED OUT</a>
+                                <a className="nav-link" href="/" onClick={Auth.logout} >LOGGED OUT</a>
                             </li>
                             </>)  }
                     </ul>
