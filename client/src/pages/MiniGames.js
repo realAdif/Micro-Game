@@ -17,9 +17,9 @@ export default function MiniGame(){
                     <div className="card">
                     <img src={hangman} className="card-img-top" alt='bannerImages' id='banner'></img>
                         <div className="card-body">
-                            <h5 className="card-title">Tic Tac Toe</h5>
+                            <h5 className="card-title">Hangman</h5>
                             <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <a href="/tictactoe" className="btn btn-primary">Lets play</a>
+                            <a href="/hangman" className="btn btn-primary">Lets play</a>
                         </div>
                     </div>
                     </Col>
