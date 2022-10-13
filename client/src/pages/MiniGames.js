@@ -1,8 +1,10 @@
 import React from "react";
 import {Container,Row,Col} from 'react-grid-system';
 import Navbar from "./Navbar";
+import Footer from "./Footer";
 import '../styles/minigame.css'
 import hangman from '../styles/asset/HangmanMiniGame.png'
+import mathQuiz from '../styles/asset/MathQuiz.png'
 
 
 export default function MiniGame(){
@@ -25,7 +27,7 @@ export default function MiniGame(){
                     </Col>
                     <Col >
                     <div className="card">
-                {/* <img className="card-img-top" src="..." alt="Card image cap"/> */}
+                    <img src={mathQuiz} className="card-img-top" alt='bannerImages' id='banner'></img>
                         <div className="card-body">
                             <h5 className="card-title">Math Quiz</h5>
                             <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
@@ -39,7 +41,7 @@ export default function MiniGame(){
             <p id="minigameText"> More Micro-Games are on the way...</p>
 
 
-            
+            <Footer/>
         </section>
     )
 

@@ -1,10 +1,22 @@
 import React from 'react';
 import Navbar from './Navbar';
+import Footer from './Footer';
 import Auth from "../utils/auth";
-
+import { useQuery } from "@apollo/client";
+import {QUERY_USER} from '../utils/queries'
 
 
 export default function Homepage(){
+
+    const { loading, data } = useQuery(QUERY_USER);
+  
+    if(loading){
+        return(
+            <div>
+                loading...
+            </div>
+        )
+    }
     return(
         <div>
             <Navbar/>       
@@ -20,11 +32,11 @@ export default function Homepage(){
             </div>
             ):(
                 <>
-                    <p id='titleScreen'>Wellcome --Username--</p>
+                    <p id='titleScreen'>Wellcome {data.user.username}</p>
                 </>
             )}
             
-            
+            <Footer/>
         </div>
     )
 }

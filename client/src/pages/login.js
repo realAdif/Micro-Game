@@ -29,7 +29,7 @@ export default function Login(props){
             });
             console.log(data)
 
-            Auth.Login(data.login.token);
+            Auth.login(data.login.token);
         } catch(e){
             console.error(e);
         }
