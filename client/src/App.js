@@ -15,6 +15,7 @@ import MiniGame from './pages/MiniGames';
 import Profile from './pages/Profile';
 import Hangman from './pages/Hang-Man/Hangman';
 
+
 const httpLink = createHttpLink({
   uri: '/graphql',
 });
