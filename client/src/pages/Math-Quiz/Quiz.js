@@ -13,7 +13,7 @@ export default function Quiz (){
                 <div className="end-quiz">End quiz</div>
                 <div className="result-info">
                     <div>
-                        You have got {quizState.correntAnswerCount} of {" "} {quizState.questions.length}
+                        You have got {quizState.correntAnswerCount} of {" "} {quizState.questions.length} right
                     </div>
                     <div className="nextButton" onClick={() => dispatch({type: "RESTART"})}> play again</div>
                 </div>
