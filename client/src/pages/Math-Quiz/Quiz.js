@@ -1,13 +1,15 @@
 import React, { useContext } from "react";
 import { QuizContext } from "./context/quiz";
 import Question from "./Question";
-
+import Navbar from "../Navbar";
+import './style/quiz.css'
 
 export default function Quiz (){
     const [quizState, dispatch] = useContext(QuizContext);
     console.log(quizState);
     return (
         <div className="quiz">
+            <Navbar/>
             {quizState.showResults && (
             <div className="result">
                 <div className="end-quiz">End quiz</div>

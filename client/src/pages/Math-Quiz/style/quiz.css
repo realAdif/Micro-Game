@@ -1,0 +1,45 @@
+.score{
+    text-align: center;
+    font-size: 25px;
+    padding-top: 25px;
+}
+.nextButton{
+    text-align: center;
+    font-size: 25px;
+    padding-top: 20px;
+}
+.nextButton:hover{
+    cursor: pointer;
+    color: antiquewhite;
+}
+
+/* Question */
+.question{
+    text-align: center;
+    font-size: 30px;
+    padding: 50px;
+    text-decoration: underline;
+}
+
+/* Answers style */
+.answer{
+    text-align: center;
+    font-size: 20px;
+    padding: 9px;
+}
+.answer:hover{
+    cursor: pointer;
+    color: antiquewhite;
+}
+/* End-Game style*/
+.result{
+    text-align: center;
+    font-size: 25px;
+}
+.end-quiz{
+    padding-bottom: 15px;
+    text-decoration: underline;
+}
+.result-info{
+    padding: 15px;
+}
