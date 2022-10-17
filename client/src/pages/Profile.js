@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState} from 'react';
 import {Container,Row,Col} from 'react-grid-system';
 import { Button,Popup } from 'semantic-ui-react'
 import Navbar from './Navbar';
@@ -6,16 +6,49 @@ import Footer from './Footer';
 import '../styles/homepage.css'
 import profile from '../styles/asset/ProfilePic.jpg'
 import { useQuery } from "@apollo/client";
-import {QUERY_USER} from '../utils/queries'
+import { useMutation } from '@apollo/client';
+import {QUERY_USER} from '../utils/queries';
+import {ADD_POST} from '../utils/mutations';
+
 
 function Makepost(){
 
+    const [postState, setPostState] = useState({
+        postText:''
+    })
+    const [addPost, { error }] = useMutation(ADD_POST);
+    
+    const handlePost = async (event) => {
+        event.preventDefault();
+        console.log(postState)
+        try {
+          const { data } = addPost({
+            variables: { post: postState.postText },
+          });
+        } catch (err) {
+          console.error(err);
+        }
+    };
+    const handleChange = (event) => {
+        const { name, value } = event.target;
+        console.log({name, value})
+        if (name === 'postText') {
+          setPostState({ ...postState, [name]: value });
+
+        } else if (name !== 'postText') {
+            setPostState({ ...postState, [name]: value });
+        }
+    };
 
     return(
         <Popup content={
             <>
-            <textarea></textarea>
-            <Button>Post</Button>
+            <textarea 
+            onChange={handleChange} 
+            value={postState.postText}
+            name="postText" 
+            ></textarea>
+            <Button onClick={handlePost}>Post</Button>
             </>
         } on='click' popper={{ id: "popper-container", style: { zIndex: 2000 } }}
         trigger={<Button positive>Make a post</Button>}

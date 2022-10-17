@@ -28,7 +28,8 @@ const resolvers ={
             console.log(context.user)
             if(context.user){
                 
-                const user = await findOne({_id:context.user._id}); 
+                const user = await User.findOne({_id:context.user._id}); 
+                console.log(user)
                 user.post.push(post);
                 const newUser = await User.findByIdAndUpdate(context.user._id, user, {new: true});
                 return newUser;
