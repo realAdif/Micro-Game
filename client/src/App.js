@@ -14,8 +14,8 @@ import SignUp from './pages/signup';
 import MiniGame from './pages/MiniGames';
 import Profile from './pages/Profile';
 import Hangman from './pages/Hang-Man/Hangman';
-
-
+import Quiz from './pages/Math-Quiz/Quiz';
+import { QuizProvider } from './pages/Math-Quiz/context/quiz';
 const httpLink = createHttpLink({
   uri: '/graphql',
 });
@@ -53,6 +53,9 @@ function App() {
           />
           <Route path='/hangman'
           element={<Hangman/>}
+          />
+          <Route path='/mathquiz'
+          element={<QuizProvider><Quiz/></QuizProvider>}
           />
           
           <Route path='/login'
