@@ -1,6 +1,6 @@
-import React,{useState} from 'react';
+import React,{useState, useEffect} from 'react';
 import {Container,Row,Col} from 'react-grid-system';
-import { Button,Popup } from 'semantic-ui-react'
+import { Button,Popup, Feed, Icon  } from 'semantic-ui-react'
 import Navbar from './Navbar';
 import Footer from './Footer';
 import '../styles/homepage.css'
@@ -11,16 +11,55 @@ import {QUERY_USER} from '../utils/queries';
 import {ADD_POST} from '../utils/mutations';
 
 
-function Makepost(){
+function ShowUserName(){
+    const {loading, data } = useQuery(QUERY_USER);
+    if(loading){
+        return(
+            <div>
+                loading...
+            </div>
+        )
+    }
+    return(
+        <div className='profile-div'>
+            Name: {data.user.username}
+            <br/>
+            Score: {data.user.score}
+            <br/>
+            <br/>
+            {<MakePost/>}
+        </div>
+    )
+}
 
+function ShowAboutMe(){
+    const {loading, data } = useQuery(QUERY_USER);
+    if(loading){
+        return(
+            <div>
+                loading...
+            </div>
+        )
+    }
+    return(
+        <div>{data.user.aboutMe}</div>
+    )
+}
+
+function MakePost(){
+    
     const [postState, setPostState] = useState({
-        postText:''
+        postText:'',
     })
-    const [addPost, { error }] = useMutation(ADD_POST);
+
+    const [addPost, { error }] = useMutation(ADD_POST,{
+        refetchQueries:[
+            {query: QUERY_USER}
+        ]
+    });
     
     const handlePost = async (event) => {
         event.preventDefault();
-        console.log(postState)
         try {
           const { data } = addPost({
             variables: { post: postState.postText },
@@ -31,7 +70,7 @@ function Makepost(){
     };
     const handleChange = (event) => {
         const { name, value } = event.target;
-        console.log({name, value})
+
         if (name === 'postText') {
           setPostState({ ...postState, [name]: value });
 
@@ -56,9 +95,31 @@ function Makepost(){
     )
 }
 
+function Post({post}){
+    
+    return(
+        <>
+            <h2>All the posts of your user</h2>
+
+            <Feed>
+                <Feed.Event>
+                    <Feed.Label>
+                        <Icon name='pencil'/>
+                    </Feed.Label>
+                    <Feed.Content>
+
+                    {post.map((post,index) => (
+                        <Feed.Summary key={index}>{post}</Feed.Summary>))}
+
+                    </Feed.Content>
+                </Feed.Event>
+            </Feed>
+        </>
+    )
+}
+
 function ProfileC(){
     const {loading, data } = useQuery(QUERY_USER);
-    console.log(data)
     if(loading){
         return(
             <div>
@@ -70,34 +131,31 @@ function ProfileC(){
         <section id='profile'>
             <Container fluid>
                 <Row >
-                    <Col md={15} >
+                    <Col>
                         <h1>Wellcome {data.user.username} to Micro-Game</h1>
                     </Col>
                 </Row>
                 <br/>
                 <Row >
-                    <Col md={8} >
+                    <Col debug>
                         <Row >
-                            <Col >
+                            <Col debug>
                             <img src={profile} alt='profileImage' id='profileImage'></img>
-                            <div>
-                                Name: {data.user.username}
-                                <br/>
-                                Score: {data.user.score}
-                                <br/>
-                                {<Makepost/>}
-                            </div>
+                            <ShowUserName/>
                             </Col>
-                            <Col >
-                                <div>
+
+                            <Col debug>
+                                <div className='profile-div'>
                                     About me about profile:
                                 </div>
+                                <div><ShowAboutMe/></div>
                             </Col>
+
                         </Row>
                     </Col>
-                    <Col md={4} >Friends</Col>
                 </Row>
             </Container>
+            <Post post={data.user.post}/>
             <Footer/>
         </section>
     )

@@ -29,12 +29,30 @@ const resolvers ={
             if(context.user){
                 
                 const user = await User.findOne({_id:context.user._id}); 
-                console.log(user)
                 user.post.push(post);
                 const newUser = await User.findByIdAndUpdate(context.user._id, user, {new: true});
                 return newUser;
             }
 
+        },
+        addScore: async(parent,{score}, context) =>{
+            if(context.user){
+                const user = await User.findOne({_id:context.user._id});
+                user.score = user.score + score
+                console.log(user.score)
+                console.log(score)
+                const newUser = await User.findByIdAndUpdate(context.user._id, user, {new: true});
+                return newUser;
+
+            }
+        },
+        addAboutme: async(parent,{aboutMe}, context)=>{
+            if(context.user){
+                const user = await User.findOne({_id:context.user._id});
+                user.aboutMe = aboutMe;
+                const newUser = await User.findByIdAndUpdate(context.user._id, user,{new: true});
+                return newUser;
+            }
         },
         login: async (parent, {email,password}) =>{
             const user = await User.findOne({email}); 

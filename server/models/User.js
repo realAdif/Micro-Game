@@ -21,8 +21,9 @@ const userSchema = new Schema(
         },
         aboutMe:{
             type: String,
-            minlength: 1,
+            minlength: 0,
             maxlength: 500,
+            default: ""
         },
         post:[{
             type: String,
@@ -31,7 +32,7 @@ const userSchema = new Schema(
         }],
         score:{
             type: Number,
-            required: false
+            default: 0
         }
 
     },

@@ -5,6 +5,7 @@ export const QUERY_USER = gql`
       user{
         username
         email
+        aboutMe
         score
         post
       }

@@ -24,6 +24,10 @@
     float: left;
     border-radius: 30%;
 }
+.profile-div{
+    font-size: 18px;
+    padding-bottom: 10px;
+}
 .navbar-nav.navbar-center {
     position: absolute;
     left: 50%;
