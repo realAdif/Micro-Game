@@ -192,7 +192,7 @@ export default function Navbar(){
         <style>{mediaStyles}</style>
         <MediaContextProvider>
             <NavBar leftItems={leftItems} rightItems={rightItems}>
-                <Image src={banner} />
+                <Image src={banner} className="banner" />
             </NavBar>
         </MediaContextProvider>
     </>
