@@ -1,4 +1,4 @@
-import React,{useState, useEffect} from 'react';
+import React,{useState} from 'react';
 import {Container,Row,Col} from 'react-grid-system';
 import { Button,Popup, Feed, Icon  } from 'semantic-ui-react'
 import Navbar from './Navbar';
@@ -100,20 +100,20 @@ function Post({post}){
     return(
         <>
             <h2>All the posts of your user</h2>
-
-            <Feed>
+            {post.map((post,index) => (
+                <Feed>
                 <Feed.Event>
                     <Feed.Label>
                         <Icon name='pencil'/>
                     </Feed.Label>
                     <Feed.Content>
-
-                    {post.map((post,index) => (
-                        <Feed.Summary key={index}>{post}</Feed.Summary>))}
-
+                    <Feed.Summary key={index}>{post}</Feed.Summary>
                     </Feed.Content>
                 </Feed.Event>
-            </Feed>
+            </Feed>            
+                        
+            ))}
+            
         </>
     )
 }
@@ -128,7 +128,7 @@ function ProfileC(){
         )
     }
     return(
-        <section id='profile'>
+        <section className='profile'>
             <Container fluid>
                 <Row >
                     <Col>
@@ -140,7 +140,7 @@ function ProfileC(){
                     <Col debug>
                         <Row >
                             <Col debug>
-                            <img src={profile} alt='profileImage' id='profileImage'></img>
+                            <img src={profile} alt='profileImage' className='profileImage'></img>
                             <ShowUserName/>
                             </Col>
 

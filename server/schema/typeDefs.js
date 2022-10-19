@@ -28,6 +28,7 @@ const typeDefs = gql`
         addAboutme(aboutMe: String!): User
         login(email: String!, password: String!): Auth
         removeUser(userId: ID!): Auth
+        # removePost(userId: ID!,postId: Int!): User
     }
 
 `;

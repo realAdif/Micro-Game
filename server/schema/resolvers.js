@@ -25,7 +25,6 @@ const resolvers ={
             return { token, user };
         },
         addPost: async(parent,{post}, context) => {
-            console.log(context.user)
             if(context.user){
                 
                 const user = await User.findOne({_id:context.user._id}); 
@@ -69,9 +68,9 @@ const resolvers ={
             const token = signToken(user);
             return { token, user };
         },
-        removeUser: async (parent,{userId}) =>{
-            return User.findOneAndDelete({_id: userId});
-        }
+        // removeUser: async (parent,{userId}) =>{
+        //     return User.findOneAndDelete({_id: userId});
+        // },
     }
 };
 

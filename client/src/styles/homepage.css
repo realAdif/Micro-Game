@@ -8,17 +8,17 @@
     margin: -8px;
     margin-top: -22px;
 }
-#banner{
+.banner{
     text-align: center;
     display: block;
     justify-content: center;
     align-items: center;
     margin: auto;
 }
-#profile{
+.profile{
     text-align: center;
 }
-#profileImage{
+.profileImage{
     width: 170px;
     height: auto;
     float: left;
