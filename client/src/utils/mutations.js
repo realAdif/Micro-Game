@@ -31,3 +31,18 @@ export const ADD_POST = gql`
   }
 }
 `
+
+export const ADD_SCORE = gql`
+  mutation AddScore($score: Int!){
+    addScore(score: $score){
+      username
+    }
+  }
+`
+export const ADD_ABOUTME = gql`
+  mutation addAboutme($aboutMe: String!){
+    addAboutme(aboutMe: $aboutMe){
+      username
+    }
+  }
+`

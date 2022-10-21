@@ -1,21 +1,40 @@
 const data =[
     {
-        question: "What is does CSS stand for?",
+        question: "4x4=",
         incorrectAnswer:[
-            "Computer Style Sheets",
-            "Creative Style Sheets",
-            "Colorful Style Sheets"
+            "8",
+            "12",
+            "3"
         ],
-        correctAnswer:"Cascading Style Sheets",
+        correctAnswer:"12",
     },
     {
-        question: "What is does HTML stand for?",
+        question: "12+1+1=",
         incorrectAnswer:[
-            "H",
-            "T",
-            "M"
+            "15",
+            "19",
+            "21"
         ],
-        correctAnswer:"HTML",
+        correctAnswer:"17",
     },
+    {
+        question: "5+?+12-2=30",
+        incorrectAnswer:[
+            "12",
+            "10",
+            "11"
+        ],
+        correctAnswer:"13",
+    },
+    {
+        question: "2,3,5,8,13",
+        incorrectAnswer:[
+            "18",
+            "14",
+            "17"
+        ],
+        correctAnswer:"21",
+    },
+    
 ]
 export default data;

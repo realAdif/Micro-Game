@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import {randomWord} from './words'
 import Navbar from '../Navbar'
 import './style/hangman.css'
+import { ADD_SCORE } from "../../utils/mutations";
+import { useMutation } from "@apollo/client";
 
 import step0 from "./images/0.png";
 import step1 from "./images/1.png";
@@ -13,7 +15,10 @@ import step6 from "./images/6.png";
 
 let gameStat;
 let profileScore = 0;
+
 class Hangman extends Component {
+
+  
   static defaultProps = {
     maxWrong: 6,
     images: [step0, step1, step2, step3, step4, step5, step6],
@@ -85,7 +90,23 @@ class Hangman extends Component {
       guessed: new Set(),
       answer: randomWord(),
     });
+    
+    this.handScore();
+    
   };
+  
+  handScore = async (event) =>{
+    const [addScore, {error}] = useMutation(ADD_SCORE);
+    event.preventDefault();
+    try{
+      const {data} = addScore({
+        variables: {score: profileScore}
+      });
+    }
+    catch(err){
+      console.error(err)
+    }
+  }
 
   render() {
     const { mistake, answer } = this.state;
@@ -94,9 +115,12 @@ class Hangman extends Component {
     const altText = `${mistake}/${maxWrong} wrong guesses`;
     const isWinner = this.guessedWord().join("") === answer;
     gameStat = this.generateButtons();
+    
     if (isWinner) {
       gameStat = "YOU WON";
+      
       profileScore++;
+      
       console.log(profileScore);
     }
     if (gameOver) {

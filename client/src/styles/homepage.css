@@ -47,6 +47,10 @@
     justify-content: center;
 }
 .buttonRight{
-    margin-right: 20px;
+    margin: 20px;
     width: 200px;
+}
+.About-Me{
+    width: 200px;
+    height: 198px;
 }

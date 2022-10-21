@@ -30,8 +30,9 @@ const reducer = (state, action) =>{
             return{
                 ...state,
                 currentAnswer: action.payload,
-                correctAnswerCount
+                correctAnswerCount,  
             }
+            
         }
         case "NEXT_QUESTION": {
             const showResults =  state.currentQuestionIndex === state.questions.length -1;

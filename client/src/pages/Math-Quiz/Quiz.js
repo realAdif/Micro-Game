@@ -20,7 +20,7 @@ export default function Quiz (){
                     <div className="nextButton" onClick={() => dispatch({type: "RESTART"})}> play again</div>
                 </div>
             </div>
-            )}
+            )} 
             {!quizState.showResults && (
                 <div>
                     <div className="score">

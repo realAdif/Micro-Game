@@ -42,9 +42,6 @@ const NavBarMobile = (props) => {
         onClick={onPusherClick}
       >
         <Menu fixed="top" inverted>
-          <Menu.Item>
-            <Image size="mini" src="https://react.semantic-ui.com/logo.png" />
-          </Menu.Item>
           <Menu.Item onClick={onToggle}>
             <Icon name="sidebar" />
           </Menu.Item>
@@ -64,9 +61,7 @@ const NavBarDesktop = (props) => {
   
     return (
       <Menu fixed="top" inverted>
-        <Menu.Item>
-          <Image size="mini" src="https://react.semantic-ui.com/logo.png" />
-        </Menu.Item>
+        
   
         {leftItems.map((item) => (
           <Menu.Item {...item} />
@@ -148,54 +143,15 @@ if(Auth.loggedIn()){
     
 export default function Navbar(){
     
-    return(
-        // <div>
-
-        // <img src={banner} alt='bannerImages' className='banner'></img>
-        // <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-        //     <div className="container">
-        //         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar10">
-        //             <span className="navbar-toggler-icon"></span>
-        //         </button>
-        //         <div className="navbar-collapse collapse" id="navbar10">
-        //             <ul className="navbar-nav nav-fill w-100">
-        //                 <li className="nav-item">
-        //                     <a className="nav-link" href="/">HOME</a>
-        //                 </li>
-        //                 <li className="nav-item">
-        //                     <a className="nav-link" href="MiniGame">MINI GAMES</a>
-        //                 </li>
-        //                 {!Auth.loggedIn()?  
-        //                 (
-        //                 <>
-        //                 <li className="nav-item">
-        //                     <a className="nav-link" href="login">LOGIN</a>
-        //                 </li>
-        //                 <li className="nav-item">
-        //                     <a className="nav-link" href="signup">SIGN UP</a>
-        //                 </li>
-        //                 </>
-        //                 ): (<>
-        //                     <li className="nav-item">
-        //                         <a className="nav-link" href="profile">PROFILE</a>
-        //                     </li>
-        //                     <li className="nav-item">
-        //                         <a className="nav-link" href="/" onClick={Auth.logout} >LOGGED OUT</a>
-        //                     </li>
-        //                     </>)  }
-        //             </ul>
-        //         </div>
-        //     </div>
-        // </nav>
-        // </div>
-    <>
+    return(  
+      <>
         <style>{mediaStyles}</style>
-        <MediaContextProvider>
+          <MediaContextProvider>
             <NavBar leftItems={leftItems} rightItems={rightItems}>
-                <Image src={banner} className="banner" />
+              <Image src={banner} className="banner" />
             </NavBar>
         </MediaContextProvider>
-    </>
+      </>
     )
 }
 
