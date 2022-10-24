@@ -121,24 +121,24 @@ const NavBarChildren = (props) => (
 }
 
 let leftItems = [
-    { as: "a", content: "Home", key: "home", href: '/'},
-    { as: "a", content: "MiniGame", key: "MiniGame",href: '/minigame' },
+    { as: Link, content: "Home", key: "home", to:'/'},
+    { as: Link, content: "MiniGame", key: "MiniGame",to: '/minigame' },
     
 ];
 let rightItems = [
-    { as: "a", content: "Login", key: "login",href: '/login' },
-    { as: "a", content: "Register", key: "register",href: '/signup' }
+    { as: Link, content: "Login", key: "login",to: '/login' },
+    { as: Link, content: "Register", key: "register",to: '/signup' }
 ];
 
 
 if(Auth.loggedIn()){
     leftItems = [
-        { as: "a", content: "Home", key: "home", href: '/' },
-        { as: "a", content: "MiniGame", key: "MiniGame",href: '/minigame' },
-        { as: "a", content: "Profile", key: "profile",href: '/profile' }
+        { as: Link, content: "Home", key: "home", to: '/' },
+        { as: Link, content: "MiniGame", key: "MiniGame",to: '/minigame' },
+        { as: Link, content: "Profile", key: "profile",to: '/profile' }
     ];
     rightItems = [
-        { as: "a", content: "Log-out", key: "Log-out",href: '/', onClick:Auth.logout },  
+        { as: Link, content: "Log-out", key: "Log-out",to: '/', onClick:Auth.logout },  
     ];
 }
     

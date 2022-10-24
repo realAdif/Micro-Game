@@ -31,10 +31,10 @@ export default function Homepage(){
             </div>
             <br/>
             {!Auth.loggedIn()?(
-                <div className="flex-parent jc-center">
-                    <Link to="/login"> Login</Link>
+            <div className="flex-parent jc-center">
+                    <Link className='btn btn-primary buttonRight' to="/login"> Login</Link>
                 {/* <a href="/login" className="btn btn-primary buttonRight">login</a> */}
-                <a href="/signup" className="btn btn-primary buttonRight">sign-up</a>
+                <Link className="btn btn-primary buttonRight" to="/signup">sign-up</Link>
             </div>
             ):(
                 <>
