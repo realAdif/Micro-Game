@@ -1,6 +1,6 @@
 import React from 'react';
-import Navbar from './Navbar';
-import Footer from './Footer';
+import Navbar from '../pages/Navbar';
+import Footer from '../pages/Footer';
 import Auth from "../utils/auth";
 import { useQuery } from "@apollo/client";
 import {QUERY_USER} from '../utils/queries'
