@@ -13,11 +13,22 @@ import step4 from "./images/4.png";
 import step5 from "./images/5.png";
 import step6 from "./images/6.png";
 
+
 let gameStat;
 let profileScore = 0;
 
-class Hangman extends Component {
+function HangmanWithMutation(){
+  const [addScore, {error}] = useMutation(ADD_SCORE);
 
+  return(
+    <Hangman addScore={addScore}/> 
+  )
+
+
+}
+
+class Hangman extends Component {
+  
   
   static defaultProps = {
     maxWrong: 6,
@@ -31,6 +42,8 @@ class Hangman extends Component {
       guessed: new Set(),
       answer: randomWord(),
     };
+    this.addScore = props.addScore.bind(this);
+
     this.handleGuess = this.handleGuess.bind(this);
     this.keyPress = this.keyPress.bind(this);
     window.addEventListener("keydown", this.keyPress);
@@ -90,23 +103,25 @@ class Hangman extends Component {
       guessed: new Set(),
       answer: randomWord(),
     });
-    
-    this.handScore();
-    
   };
+
   
-  handScore = async (event) =>{
-    const [addScore, {error}] = useMutation(ADD_SCORE);
+  AddScoreProfile = async(event) => {
     event.preventDefault();
+    console.log("This works");
+    
     try{
-      const {data} = addScore({
+       const {data} = await this.addScore({
         variables: {score: profileScore}
       });
+      profileScore = 0;
     }
     catch(err){
-      console.error(err)
+      console.error(err);
     }
+    
   }
+
 
   render() {
     const { mistake, answer } = this.state;
@@ -125,6 +140,10 @@ class Hangman extends Component {
     }
     if (gameOver) {
       gameStat = "YOU LOST";
+      profileScore--;
+      if(profileScore < -0){
+        profileScore = 0
+      }
     }
 
     return (
@@ -133,6 +152,8 @@ class Hangman extends Component {
 
         <div id="gussedWrong">
         Guessed wrong: {mistake}
+        <br/>
+        <label className="text-label">Every game you win you gain a score and if you lose a game you will lose a game</label>
         </div>
 
         <p className="text-center">
@@ -141,7 +162,7 @@ class Hangman extends Component {
 
         <div>
             <p id="gussedWrong">
-            Guess the Programming Language ?
+            Guess the Country?
             </p>
             <p className="Hangman-word text-center" id="hangmanWords">
             {!gameOver ? this.guessedWord() : answer}{" "}
@@ -157,12 +178,15 @@ class Hangman extends Component {
               RESET
             </button>
           </p>
-
         </div>
-
+        <br/>
+        <div className="score-div">
+          <button className="Hangman-reset" id="resetButton" onClick={this.AddScoreProfile} >Add Score</button>
+          <label className="text-score" > Score: {profileScore}</label>
+        </div>   
       </div>
     );
   }
 }
 
-export default Hangman;
+export default HangmanWithMutation;
