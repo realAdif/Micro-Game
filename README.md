@@ -10,11 +10,11 @@ Navigation
  
 [3. License](#License)        
  
-[4. Contribution](#Contribution-Guidelines)      
+[4. Contribution/Rules](#Contribution-Guidelines)      
   
-[5. GitHub Name](#What-is-your-github-Name)   
+[5. GitHub Name and GitHub Link](#What-is-your-github-Name)   
  
-[6. GitHub Link](#What-is-the-link-for-you-website)   
+[6. Website Link](#What-is-the-link-for-you-website)   
  
 [7. Screenshot](#Screenshots)
 ### Desciption
