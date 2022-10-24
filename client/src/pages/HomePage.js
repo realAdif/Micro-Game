@@ -4,6 +4,7 @@ import Footer from '../pages/Footer';
 import Auth from "../utils/auth";
 import { useQuery } from "@apollo/client";
 import {QUERY_USER} from '../utils/queries'
+import { Link } from 'react-router-dom';
 
 
 export default function Homepage(){
@@ -31,7 +32,8 @@ export default function Homepage(){
             <br/>
             {!Auth.loggedIn()?(
                 <div className="flex-parent jc-center">
-                <a href="/login" className="btn btn-primary buttonRight">login</a>
+                    <Link to="/login"> Login</Link>
+                {/* <a href="/login" className="btn btn-primary buttonRight">login</a> */}
                 <a href="/signup" className="btn btn-primary buttonRight">sign-up</a>
             </div>
             ):(

@@ -1,6 +1,7 @@
 import React from "react";
 import banner from '../styles/asset/MicroGame.png'
 import Auth from "../utils/auth";
+import { Link } from "react-router-dom";
 import { createMedia } from "@artsy/fresnel";
 import { Container, Icon, Image, Menu, Sidebar } from "semantic-ui-react";
 console.log(Auth.loggedIn());
@@ -120,7 +121,7 @@ const NavBarChildren = (props) => (
 }
 
 let leftItems = [
-    { as: "a", content: "Home", key: "home", href: '/' },
+    { as: "a", content: "Home", key: "home", href: '/'},
     { as: "a", content: "MiniGame", key: "MiniGame",href: '/minigame' },
     
 ];
