@@ -6,6 +6,7 @@ import Footer from "./Footer";
 import '../styles/minigame.css'
 import hangman from '../styles/asset/HangmanMiniGame.png'
 import mathQuiz from '../styles/asset/MathQuiz.png'
+import { Link } from "react-router-dom";
 
 
 export default function MiniGame(){
@@ -23,10 +24,17 @@ export default function MiniGame(){
                             Hangman
                         </Item.Description>
                         <Item.Extra>
-                        <Button floated='right'href='/hangman' hef primary>
+
+                        {/* <Button floated='right'hef primary>
+                            Lets Play
+                            <Icon name='chevron right' />
+                        </Button> */}
+                        <Link floated='right' to="/hangman" hef primary>
+                        <Button floated='right'hef primary>
                             Lets Play
                             <Icon name='chevron right' />
                         </Button>
+                        </Link>
                         </Item.Extra>
                     </ItemContent>
                 </Item>
