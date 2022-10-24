@@ -14,7 +14,7 @@ Navigation
   
 [5. GitHub Name](#What-is-your-github-Name)   
  
-[6. GitHub Link](#What-is-your-link-to-your-github-URL)   
+[6. GitHub Link](#What-is-the-link-for-you-website)   
  
 [7. Screenshot](#Screenshots)
 ### Desciption
@@ -38,10 +38,10 @@ Apache-2.0
 Be nice no rude words on your Posts or About Me or YOU WILL BE BANNED
 
 ### What is your github Name 
-realAdif
+realAdif Check out more of my projects [GitHub URL](https://github.com/realAdif) 
 
-### What is your link to your github URL
-Check out more of my projects [GitHub URL](https://github.com/realAdif) 
+### What is the link for you website
+You can [click me](https://nameless-refuge-31402.herokuapp.com/) 
 
 ### Screenshots
 ![image](https://user-images.githubusercontent.com/90451018/197517791-2d74f561-a697-4072-b33a-1eb807211f63.png)
