@@ -12,19 +12,22 @@ import step3 from "./images/3.png";
 import step4 from "./images/4.png";
 import step5 from "./images/5.png";
 import step6 from "./images/6.png";
+import { QUERY_USER } from "../../utils/queries";
 
 
 let gameStat;
 let profileScore = 0;
 
 function HangmanWithMutation(){
-  const [addScore, {error}] = useMutation(ADD_SCORE);
+  const [addScore, {error}] = useMutation(ADD_SCORE,{
+    refetchQueries:[
+      {query: QUERY_USER}
+    ]
+  });
 
   return(
     <Hangman addScore={addScore}/> 
   )
-
-
 }
 
 class Hangman extends Component {
